@@ -1,0 +1,12 @@
+{
+    "name": "Zendesk URL Shoterner",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "Zendesk URL shoterner",
+    "content_scripts": [{
+      "matches": ["https://guide.dialogplay.jp/hc/ja/*"],
+      "js": [
+        "js/content.js"
+      ]
+    }]
+  }
