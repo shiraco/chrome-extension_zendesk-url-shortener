@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chrome Extension Options</title>
+  <style>
+    body: { padding: 10px; }
+  </style>
+  <script>
+    function addColumn() {
+        var table = document.getElementById("table");
+
+        // 行を行末に追加
+        var row = table.insertRow(-1);
+
+        //td分追加
+        var cell1 = row.insertCell(-1);
+        var cell2 = row.insertCell(-1);
+        var cell3 = row.insertCell(-1);
+        var cell4 = row.insertCell(-1);
+
+        // セルの内容入力
+        cell1.innerHTML = 'custom';
+        cell2.innerHTML = '<input type="text" placeholder="sub.your-zendesk-domain.com" maxlength="40" size="40">';
+        cell3.innerHTML = '<input type="checkbox">';
+        cell4.innerHTML = '<input type="button" value="delete" id="coladd" onclick="delteColumn(this)">';
+    }
+
+    function delteColumn(obj) {
+        // 削除ボタンを押下された行を取得
+        tr = obj.parentNode.parentNode;
+
+        // trのインデックスを取得して行を削除する
+        tr.parentNode.deleteRow(tr.sectionRowIndex);
+    }
+
+  </script>
+</head>
+<body>
+
+  <div>
+    Enable:
+    <input type="checkbox" checked>  
+  </div>
+
+  <div>
+    <div>
+      行を追加します<input type="button" value="行を追加" id="coladd" onclick="addColumn()">
+    </div> 
+    <div>
+      Target Zendesk domains:
+      <table id="table">
+        <tr>
+          <td>default</td>
+          <td><input type="text" placeholder="subdomain" maxlength="20" size="20">.zendesk.com</td>
+          <td><input type="checkbox" checked></td>
+          <td></td>
+        </tr>
+      </table>  
+    </div>
+  </div>
+
+　<button id="save">save</button>
+  
+</body>
+</html>
